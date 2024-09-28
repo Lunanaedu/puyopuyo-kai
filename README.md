@@ -11,4 +11,4 @@
 
 
 ## 使い方
-
+ [https://lunanaedu.github.io/puyopuyo-kai/]( https://lunanaedu.github.io/puyopuyo-kai/)を開きます。
