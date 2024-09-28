@@ -1,10 +1,7 @@
 
 
 # ぷよぷよプログラミングAI学習用
-
-[![lite-badge](https://jupyterlite.rtfd.io/en/latest/_static/badge.svg)](https://jupyterlite.github.io/demo)
-
-JupyterLite deployed as a static site to GitHub Pages, for demo purposes.
+本家は[こちら](https://github.com/aship/puyopuyo)にあります。
 
 ## ✨ Try it in your browser ✨
 
