@@ -1,7 +1,7 @@
 
 
 # ぷよぷよプログラミングAI学習用
-本家は[https://github.com/aship/puyopuyo](https://github.com/aship/puyopuyo)にあります。
+本家は[https://github.com/aship/puyopuyo](https://github.com/aship/puyopuyo)にあります。  
 ©️SEGA
 ## ✨ Try it in your browser ✨
 
