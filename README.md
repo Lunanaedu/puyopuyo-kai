@@ -16,5 +16,6 @@ sample_aiの中にあるagent_learned.zipをダウンロードします。
 ![agent_learn_x2](https://github.com/user-attachments/assets/2f95501f-c941-4d94-9c35-626ee495a088)
 
 
+[https://lunanaedu.github.io/jupyterlite-puyopuyo/lab/index.html](https://lunanaedu.github.io/jupyterlite-puyopuyo/lab/index.html)で実際に学習できます。
 
 
