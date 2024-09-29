@@ -12,7 +12,8 @@
  [https://lunanaedu.github.io/puyopuyo-kai/]( https://lunanaedu.github.io/puyopuyo-kai/)を開きます。
 
 
+![agent_learn_x2](https://github.com/user-attachments/assets/2f95501f-c941-4d94-9c35-626ee495a088)
 
 
-![agent_learn_x2](https://github.com/user-attachments/assets/760a23f8-0b0c-4555-8e31-b27343e29eeb)
+
 
