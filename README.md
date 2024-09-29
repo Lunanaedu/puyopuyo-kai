@@ -10,3 +10,5 @@
 
 ## 使い方
  [https://lunanaedu.github.io/puyopuyo-kai/]( https://lunanaedu.github.io/puyopuyo-kai/)を開きます。
+
+![agent_learn](https://github.com/user-attachments/assets/b7005220-94dd-4ac8-84c2-076d71c2ce2c)
