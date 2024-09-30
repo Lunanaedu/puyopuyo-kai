@@ -19,4 +19,10 @@ sample_aiの中にあるagent_learned.zipをダウンロードします。
 [https://lunanaedu.github.io/jupyterlite-puyopuyo/lab/index.html](https://lunanaedu.github.io/jupyterlite-puyopuyo/lab/index.html)で実際に学習できます。
 
 ## 本家からの変更点
-作成中
+１　pythonコードをwebクライアントで使用するために、pyodideを採用  
+[https://github.com/pyodide/pyodide](https://github.com/pyodide/pyodide)  
+
+２　コンソール操作を人工知能ができるように変更  
+
+## まとめサイト
+[https://educational-ai.hatenablog.com/entry/2024/09/30/212131](https://educational-ai.hatenablog.com/entry/2024/09/30/212131)
