@@ -25,4 +25,4 @@ sample_aiの中にあるagent_learned.zipをダウンロードします。
 ２　コンソール操作を人工知能ができるように変更  
 
 ## まとめサイト
-[https://educational-ai.hatenablog.com/entry/2024/09/30/212131](https://educational-ai.hatenablog.com/entry/2024/09/30/212131)
+[https://qiita.com/educational-ai/items/50c0fa689c01794d145e](https://qiita.com/educational-ai/items/50c0fa689c01794d145e)
