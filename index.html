@@ -14,10 +14,19 @@
     <title>Sim puyo</title>
     <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+    <script type="text/javascript" src="dist/jszip-utils.js"></script>
+
     <script>
       async function pyodide_load(){
         pyodide = await loadPyodide();
-        await pyodide.loadPackage("numpy");  
+        await pyodide.loadPackage("numpy"); 
+        JSZipUtils.getBinaryContent('lib.zip', function(err, data) {
+          if(err) {
+            throw err; // or handle err
+          }
+          pyodide.unpackArchive(data, "zip");
+        })
+
       };
       pyodide_load();
 
@@ -25,21 +34,42 @@
     <link rel="stylesheet" href="css/style.css" />
 
   </head>
+ 
   <body style="margin: 0;" >
+    <input type="button" id="sample" value="Sample AI"  />
     <input type="file" id="getfile" accept=".js, .py, .zip" >
     <input type="button" id="load" value="load"  />
+
     <script>
       function start_loop(){
           initialize();
           loop();
       };
+      
+      flg_AI = false;
       async function loading(){
         const button = document.querySelector('#load');
         button.style.display = 'none';
         const button2 = document.querySelector('#getfile');
         button2.style.display = 'none';
+        const button3 = document.querySelector('#sample');
+        button3.style.display = 'none';
         
-        if (typeof loop !== 'function'){
+        if (flg_AI){
+            const list_packages=[
+                    "config.js",
+                    "stage.js",
+                    "score.js",
+                    "puyoimage.js",
+                    "player.js",
+                    "game.js"];
+            for(const mod_name of list_packages){
+                var script = document.createElement('script'); 
+                script.src = "src_ai/" + mod_name;
+                document.head.appendChild(script);
+            }
+
+        } else {
             const list_packages=[
                     "config.js",
                     "stage.js",
@@ -59,9 +89,64 @@
 
       var load = document.querySelector('#load');
       load.addEventListener("click", loading);
+
+      async function load_sample(){
+        const button = document.querySelector('#load');
+        button.style.display = 'none';
+        const button2 = document.querySelector('#getfile');
+        button2.style.display = 'none';
+        const button3 = document.querySelector('#sample');
+        button3.style.display = 'none';
+
+        var zip = JSZip();
+
+        JSZipUtils.getBinaryContent('agent_learned.zip', function(err, data) {
+          if(err) {
+            throw err; // or handle err
+          }
+          zip.loadAsync(data).then(function(){
+            pyodide.unpackArchive(data, "zip");
+            for (const fileName in zip.files){
+              console.log(fileName);
+              const child_file = zip.files[fileName];
+              let infile_type = fileName.split('.').pop();
+              if(!child_file.dir && infile_type=='js'){
+                child_file.async('text').then(function(content){
+                  var script = document.createElement('script');
+                  script.text=content;
+                  document.head.appendChild(script);
+                });
+              }
+            };
+            console.log("agent setup");
+            const list_packages=[
+              "config.js",
+              "stage.js",
+              "score.js",
+              "puyoimage.js",
+              "player.js",
+              "game.js"];
+            for(const mod_name of list_packages){
+                var script = document.createElement('script'); 
+                script.src = "src_ai/" + mod_name;
+                document.head.appendChild(script);
+            };
+            pyodide.runPython(`
+              import os
+              print(os.listdir())
+            `);
+            setTimeout(start_loop,2000);
+          });
+        })
+
+      }
+
+      var sample = document.querySelector('#sample');
+      sample.addEventListener("click", load_sample);
       
       var parent_files = document.querySelector('#getfile');
       parent_files.onchange = async function (){
+        flg_AI = true;
         var filelist = parent_files.files;
         for(file of filelist){
           var reader = new FileReader();
@@ -102,18 +187,6 @@
                 }
               };
             });
-            const list_packages=[
-                    "config.js",
-                    "stage.js",
-                    "score.js",
-                    "puyoimage.js",
-                    "player.js",
-                    "game.js"];
-            for(const mod_name of list_packages){
-                var script = document.createElement('script'); 
-                script.src = "src_ai/" + mod_name;
-                document.head.appendChild(script);
-            }
 
           }
         }
